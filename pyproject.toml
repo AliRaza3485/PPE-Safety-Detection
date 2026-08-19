@@ -1,0 +1,37 @@
+[project]
+name = "ppe-detector"
+version = "0.1.0"
+description = "PPE safety compliance detection system"
+requires-python = ">=3.10"
+dependencies = [
+    "ultralytics>=8.2.0",
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "opencv-python>=4.9.0",
+    "albumentations>=1.4.0",
+    "mlflow>=2.12.0",
+    "dvc>=3.50.0",
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.29.0",
+    "pydantic>=2.6.0",
+    "pyyaml>=6.0.0",
+    "python-multipart>=0.0.9",
+    "roboflow>=1.1.0",
+    "numpy>=1.26.0",
+    "pillow>=10.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+    "black>=24.0.0",
+    "ruff>=0.4.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
