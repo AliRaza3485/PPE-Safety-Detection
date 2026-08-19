@@ -18,11 +18,9 @@ models/best.pt
 models/*.pt
 
 # ── DVC-tracked data (data lives in remote storage) ───────
-data/images/
-data/labels/
+data/raw/
 data/*.zip
-*.dvc
-
+!data/raw.dvc
 # ── Node / Next.js ────────────────────────────────────────
 node_modules/
 .next/
