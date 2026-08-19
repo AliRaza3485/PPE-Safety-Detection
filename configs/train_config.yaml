@@ -1,0 +1,46 @@
+# Training configuration for PPE Detection (YOLOv8)
+
+model:
+  architecture: "yolov8n.pt"     # nano — fastest, good starting point; can upgrade to yolov8s.pt later
+  pretrained: true
+
+training:
+  epochs: 60
+  batch_size: 16
+  img_size: 640
+  patience: 15                    # early stopping — stop if val metric doesn't improve for N epochs
+  optimizer: "auto"                # YOLOv8 auto-selects (typically SGD or AdamW)
+  learning_rate: 0.01              # initial LR (YOLOv8 default, cosine decay applied internally)
+  device: 0                        # GPU device index (Colab will assign GPU 0)
+  seed: 42
+
+augmentation:
+  # Built-in YOLOv8 augmentation (applied automatically during training)
+  hsv_h: 0.015                     # hue augmentation
+  hsv_s: 0.7                       # saturation augmentation
+  hsv_v: 0.4                       # value/brightness augmentation
+  degrees: 10.0                    # rotation range
+  translate: 0.1
+  scale: 0.5
+  fliplr: 0.5                      # horizontal flip probability
+  mosaic: 1.0                      # mosaic augmentation (combines 4 images) — helps small object detection
+  mixup: 0.1                       # slight mixup for regularization
+
+class_handling:
+  # Our dataset has class imbalance: helmet (12,687) vs head (4,188), ~3:1 ratio
+  # YOLOv8 doesn't support direct per-class loss weighting via config,
+  # so imbalance is handled via:
+  #   1. Higher mosaic/mixup probability (exposes model to more class combinations)
+  #   2. Offline oversampling of minority-class (head) images before training
+  #   3. Per-class metric evaluation post-training (not just overall mAP)
+  minority_class: "head"
+  oversample_factor: 2             # generate 2 extra augmented copies per minority-class image
+
+experiment_tracking:
+  mlflow_experiment_name: "ppe-safety-detection"
+  run_name_prefix: "yolov8n"
+
+paths:
+  data_yaml: "data/raw/data.yaml"
+  output_dir: "runs/train"
+  best_model_path: "models/best.pt"
