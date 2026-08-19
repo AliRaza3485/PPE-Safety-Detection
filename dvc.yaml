@@ -1,0 +1,23 @@
+# DVC pipeline for the PPE safety detection model.
+# Run the full pipeline with:  dvc repro
+#
+# `data/images` and `data/labels` are expected to be pulled from the
+# DVC remote (dvc pull) before training.
+
+stages:
+  train:
+    cmd: python -m src.train --data data/data.yaml --epochs 50 --imgsz 640
+    deps:
+      - src/train.py
+      - src/utils.py
+      - data/data.yaml
+      - data/images
+      - data/labels
+    params:
+      - params.yaml:
+          - train
+    outs:
+      - models/best.pt
+    metrics:
+      - models/metrics.json:
+          cache: false

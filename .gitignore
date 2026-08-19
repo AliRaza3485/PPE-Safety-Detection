@@ -1,0 +1,36 @@
+# ── Python ────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# ── ML artifacts ──────────────────────────────────────────
+runs/
+wandb/
+*.pt
+*.onnx
+*.engine
+# keep the tracked final weight out of git (DVC handles it)
+models/best.pt
+models/*.pt
+
+# ── DVC-tracked data (data lives in remote storage) ───────
+data/images/
+data/labels/
+data/*.zip
+*.dvc
+
+# ── Node / Next.js ────────────────────────────────────────
+node_modules/
+.next/
+frontend/out/
+frontend/.env*.local
+
+# ── OS / Editor ───────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

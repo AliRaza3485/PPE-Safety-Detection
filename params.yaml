@@ -1,0 +1,10 @@
+# Hyperparameters tracked by DVC. Change these and run `dvc repro`
+# to re-train and version a new model.
+train:
+  model: yolov8n.pt      # base checkpoint to fine-tune from
+  epochs: 50
+  imgsz: 640
+  batch: 16
+  patience: 15           # early-stopping patience
+  lr0: 0.01              # initial learning rate
+  seed: 42
