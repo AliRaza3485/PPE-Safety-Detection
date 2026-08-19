@@ -1,2 +1,0 @@
-# Placeholder so the empty directory is tracked by git.
-# Actual dataset (images/, labels/) is versioned with DVC — run `dvc pull`.
