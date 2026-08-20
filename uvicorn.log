@@ -1,0 +1,15 @@
+INFO:     Started server process [1776]
+INFO:     Waiting for application startup.
+2026-08-20 11:42:30,310 INFO api.main: Warm-loading PPE detector...
+2026-08-20 11:42:30,311 INFO api.dependencies: Loading PPEDetector weights=models\best.pt conf=0.25 iou=0.45 device=cpu
+2026-08-20 11:42:30,428 INFO api.main: PPE detector loaded, API ready.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-08-20 11:42:51,750 INFO ppe_detector.api.access: POST /predict -> 200 (4790.97ms)
+INFO:     127.0.0.1:43191 - "POST /predict HTTP/1.1" 200 OK
+2026-08-20 11:43:09,545 INFO ppe_detector.api.access: POST /predict -> 200 (270.30ms)
+INFO:     127.0.0.1:43199 - "POST /predict HTTP/1.1" 200 OK
+2026-08-20 11:43:32,034 INFO ppe_detector.api.access: POST /predict -> 200 (222.46ms)
+INFO:     127.0.0.1:43200 - "POST /predict HTTP/1.1" 200 OK
+2026-08-20 11:43:47,078 INFO ppe_detector.api.access: POST /predict -> 200 (214.27ms)
+INFO:     127.0.0.1:43209 - "POST /predict HTTP/1.1" 200 OK
