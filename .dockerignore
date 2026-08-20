@@ -1,0 +1,28 @@
+# .dockerignore — keep the Docker build context small.
+# Docker does NOT read .gitignore, so anything not listed here is sent to the
+# daemon as build context. The Dockerfile only COPYs api/, src/, models/best.pt
+# and requirements.txt, but we still trim the context for speed/size.
+
+data/
+runs/
+wandb/
+notebooks/
+tests/
+scripts/
+frontend/
+venv/
+.venv/
+.git/
+.github/
+.dvc/
+.pytest_cache/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.egg-info/
+docs/
+*.log
+.env
+.env.*
+
+# NOTE: models/best.pt is intentionally NOT excluded — it must be in the build context.

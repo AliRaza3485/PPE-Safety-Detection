@@ -13,9 +13,10 @@ wandb/
 *.pt
 *.onnx
 *.engine
-# keep the tracked final weight out of git (DVC handles it)
-models/best.pt
+# Other .pt checkpoints stay out of git. The final deployable model IS committed
+# (CI bakes it into the Docker image; it is not DVC-tracked).
 models/*.pt
+!models/best.pt
 
 # ── DVC-tracked data (data lives in remote storage) ───────
 data/raw/
